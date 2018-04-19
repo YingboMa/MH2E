@@ -1,0 +1,90 @@
+
+
+\section{Iterated integrals}
+Intuition for why Fubini's Theorem is true:
+
+Let $R = [a,b]\times [c,d]$, assume $f(x,y)$ is ``nice'' (e.g. continuous is
+sufficient)
+
+Fubinii: \[\iint_{R} f(x,y)\dd{A} = \int_a^b\int_c^d f(x,y) \dd{y}\dd{x} =
+\int_c^d\int_a^b f(x,y)\dd{x}\dd{y}\]
+
+Reminder: If $\iint_R f(x.y) \dd{A}$ exists, then it is
+\[
+  \iint_{R}f(x,y)\dd{A} = \overbrace{\lim_{m,n\to \infty} \sum_{i=1}^m \sum_{j=1}^n
+                          f(x_{ij}^*, y_{ij}^*)}^{m\cdot n\text{ numbers}} \Delta A
+\]
+for any choice of sample points $(x_{ij}^*, y_{ij}^*)$: you can choose any
+sample point in the $i,j$-th rectangle.
+
+\subsection{Ex:}
+Let $R = [0,1] \times [0,1], \quad m=4, n=2$. Let's choose sample points to be
+lower-right points in each rectangle. (We can choose anything, could choose
+lower-right in the 1st rectangle, middle in the 2nd rectange... As long as
+$\iint_R f(x,y) \dd{}A$ exists, the choice doesn't matter as $m,n\to \infty$.)
+
+Riemann sum:
+\begin{align*}
+  &\iint_{R}f(x,y)\dd{A} =\Big(f(\frac{1}{4},0) + f(\frac{1}{2}, 0) +
+                          f(\frac{3}{4},0) + f(1,0)
+                          + f(\frac{1}{4},\frac{1}{2})
+                          + f(\frac{1}{2}, \frac{1}{2})
+                          + f(\frac{3}{4}, \frac{1}{2}) +
+                          f(1,\frac{1}{2})\Big) (\frac{1}{4}\cdot \frac{1}{2}) \\
+  =& \frac{1}{2}\Big(\underbrace{\sum_{i=1}^4
+  f(\frac{i}{4},0)\cdot\frac{1}{4}}_{\text{Riemann sum with }m=4 \text{ for }
+  \int_0^1 f(x,0)\dd{x}}\Big) +
+  \frac{1}{2}\Big(\underbrace{\sum_{i=1}^4
+  f(\frac{i}{4},\frac{1}{2})\cdot\frac{1}{4}}_{\text{Riemann sum with }m=4 \text{ for }
+  \int_0^1 f(x,\frac{1}{2})\dd{x}}\Big)
+\end{align*}
+
+Intuition for \[\iint_{R} f(x,y) \dd{A} = \int_0^1\underbrace{\int_0^1 f(x,y)
+\dd{x}}_{\text{Treat }y \text{as a constant}}\dd{y}\]
+
+\[\sum_{i=1}^4\underbrace{\sum_{j=1}^2 f(\frac{i}{4},
+\frac{j-1}{2})\cdot\frac{1}{2}}_{
+  \text{Riemann sum for }\int_0^1f(\frac{i}{4},y)\dd{y} \text{ Total: RS for }
+  \int_0^1\int_0^1 f(x,y) \dd{y}\dd{x}
+}\]
+
+Upshot: Intuition for Fubini's Theorem: $\iint_R f(x,y) \dd{A}$ is a limit of
+(finite) Riemann sums. We can arrange those sums so they involve either:
+Riemann sums for $f(x,y)$ with $y$ constant or $f(x,y)$ with $y$ constant.
+
+\begin{theorem}
+  If $f(x,y)$ is continuous, the $\iint_R f(x,y)\dd{A}$ exists, where $R$ is a
+  finite rectangle. Unfortunately, we need to consider discontinuous functions.
+\end{theorem}
+Why? Say we want to integrate $f(x,y)$ over a shape $S$ which is not a
+rectangle.
+\paragraph{15.2:} Extend $f(x,y)$ by
+\begin{align*}
+  F(x,y) = \begin{cases}
+    &f(x,y),\quad\text{if } (x,y)\in S \\
+    &0,\quad\text{if } (x,y)\not\in S
+  \end{cases}
+\end{align*}
+
+\section{Application of Fubini's Theorem}
+\subsection{Ex:}
+Say $g(x),h(y)$ are continuous single-variable functions. Say
+$f(x,y)=g(x)h(y)$. Say $R=[a,b]\times[c,d]$. Prove or disprove: $\iint_R f(x,y)
+\dd{A} = \int_a^bg(x)\dd{x} \int_c^dh(y)\dd{y}$.
+
+\begin{proof}
+  We know
+  \begin{align*}
+    \iint_R f(x,y) \dd{A} &= \iint_R g(x)h(y) \dd{A} \\
+    &=\int_a^b\int_c^d g(x)h(y)\dd{y}\dd{x}\qq{by Fubini's Theorem}
+  \end{align*}
+  Since $g(x)$ does not depend on $y$, this is equal to
+  \[
+    \int_a^b g(x)\int_c^dh(y)\dd{y}\dd{x}.
+  \]
+  Since $\int_c^d h(y)\dd{y}$ does not depend on $x$, this is equal to
+  \[
+    \int_a^bg(x)\dd{x} \int_c^dh(y)\dd{y} =
+    \int_c^dh(y)\dd{y}\int_a^bg(x)\dd{x}.
+  \]
+\end{proof}

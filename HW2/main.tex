@@ -1,0 +1,92 @@
+\documentclass[8pt,twocolumn]{article}
+\input{../typesetting.tex}
+\author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
+\title{\vspace{-1.5cm}Homework 2}
+\date{April 16, 2018}
+
+\begin{document}
+\maketitle
+
+\paragraph{Notation:}
+I am going to use the expression $\lim_{m,n\to\infty}$ to denote
+$\lim_{m\to\infty}\lim_{n\to\infty}$ throughout this homework.
+
+\begin{exercise}{10}
+  For all $x>1$, let
+  \[
+    \Gamma(x) := \int_0^\infty t^{x-1}e^{-t}\dd{t}.
+  \]
+  Using integration by parts and induction, prove that $\Gamma(x)=(x-1)!$ for
+  all integers $x\ge1$. You may use without proof that
+  $\lim_{t\to\infty}t^ae^{-t}=0$ for all real numbers $a$.
+\end{exercise}
+
+\begin{proof}
+  I am going to prove this by using induction on the variable $x$.
+
+  \emph{Base case:} If $x=1$, then
+  $\int_0^\infty1e^{-t}\dd{t}=\int_{-\infty}^0e^u\dd{u} = e^0-e^{-\infty} = 1$,
+  where $u=-t$, and $(1-1)!=1$. Therefore the base case holds.
+
+  \emph{Induction step:} Fix any integer $k\ge 1$, and assume $\int_0^\infty
+  t^{k-1}e^{-t}\dd{t}=(k-1)!$, then we want to show $\int_0^\infty
+  t^{k}e^{-t}\dd{t}=k!$. We have
+  \begin{align*}
+    \int_0^\infty t^{k-1}e^{-t}\dd{t} =
+    \underbrace{\cancelto{0}{e^{-t}\cdot\frac{t^k}{k}\Big\vert_0^\infty} +
+    \frac{1}{k}\int_0^\infty t^ke^{-t} \dd{t}}_\text{integration by parts}.
+  \end{align*}
+  We can then do
+  \begin{align*}
+    \int_0^\infty t^{k}e^{-t}\dd{t} &= k\cdot\frac{1}{k}\int_0^\infty t^ke^{-t}
+    \dd{t}=k\cdot \int_0^\infty t^{k-1}e^{-t}\dd{t}\\
+    &=k\cdot (k-1)!\qq{by the induction hypothesis}\\
+    &=x!.
+  \end{align*}
+  Thus, the induction step holds. Thus we have proved the proposition by
+  induction for all $x\ge 1$.
+\end{proof}
+
+\begin{exercise}{11}
+  Proof or disproof: if $R=[a,b]\times[c,d]$ and $f(x,y)=g(x)+h(y)$, where
+  $g(x)$ and $h(y)$
+\end{exercise}
+
+\begin{exercise}{16}
+  What is the domain of the function $\frac{1}{\sqrt{-\log(u)}}$? Compute that
+  \[
+    \int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}} = \sqrt{\pi}
+  \]
+\end{exercise}
+
+\begin{answer}{16}
+  The domain of the function $\frac{1}{\sqrt{-\log(u)}}$ is $[0,1]$. The
+  integral
+  \[
+    \int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}} = \sqrt{\pi}
+  \]
+  can be computed by using calculate the integral $\int_0^\infty
+  e^{-x^2}\dd{x}$ first.
+  \begin{align*}
+    &\int_0^\infty e^{-x^2}\dd{x} = \sqrt{(\int_0^\infty e^{-x^2}\dd{x})^2} \\
+    &= \sqrt{\int_0^\infty e^{-a^2}\dd{a}\int_0^\infty e^{-b^2}\dd{b}}
+    = \sqrt{\int_0^\infty\int_0^\infty e^{-(a^2+b^2)}\dd{a}\dd{b}} \\
+    &= \sqrt{\int_0^\frac{\pi}{2}\int_0^\infty e^{-r^2} \cdot r
+    \dd{r}\dd{\theta}}
+    = \sqrt{\frac{\pi}{2}\int_0^\infty e^{-r^2} \cdot r \dd{r}} \\
+    &= \sqrt{\frac{\pi}{4}\int_{-\infty}^{0} e^c \dd{c}},\quad c =
+    -r^2, \dd{c} = -2\dd{r}  \\
+    &= \sqrt{\frac{\pi}{4}(e^0-e^{-\infty})} = \frac{\sqrt{\pi}}{2}
+  \end{align*}
+  Then, we can calculate $\int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}}$ via
+  substitution.
+  \begin{align*}
+    \int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}} &= \int_\infty^0
+    -\frac{e^{-y}}{\sqrt{y}} \dd{y},\quad y=-\log(u), \dd{y} = -e^y\dd{u} \\
+    &= \int_0^\infty x^{-1} e^{-x^2} 2x \dd{x},\quad y=x^2,
+    \dd{y}=2x\dd{x} \\
+    &= 2\int_0^\infty e^{-x^2} \dd{x} = 2\frac{\sqrt{\pi}}{2} = \sqrt{\pi}
+  \end{align*}
+\end{answer}
+
+\end{document}
