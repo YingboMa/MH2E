@@ -7,11 +7,7 @@
 \begin{document}
 \maketitle
 
-\paragraph{Notation:}
-I am going to use the expression $\lim_{m,n\to\infty}$ to denote
-$\lim_{m\to\infty}\lim_{n\to\infty}$ throughout this homework.
-
-\begin{exercise}{10}
+\begin{Exercise}[number=10]
   For all $x>1$, let
   \[
     \Gamma(x) := \int_0^\infty t^{x-1}e^{-t}\dd{t}.
@@ -19,8 +15,9 @@ $\lim_{m\to\infty}\lim_{n\to\infty}$ throughout this homework.
   Using integration by parts and induction, prove that $\Gamma(x)=(x-1)!$ for
   all integers $x\ge1$. You may use without proof that
   $\lim_{t\to\infty}t^ae^{-t}=0$ for all real numbers $a$.
-\end{exercise}
+\end{Exercise}
 
+\begin{Answer}[number=10]
 \begin{proof}
   I am going to prove this by using induction on the variable $x$.
 
@@ -30,7 +27,8 @@ $\lim_{m\to\infty}\lim_{n\to\infty}$ throughout this homework.
 
   \emph{Induction step:} Fix any integer $k\ge 1$, and assume $\int_0^\infty
   t^{k-1}e^{-t}\dd{t}=(k-1)!$, then we want to show $\int_0^\infty
-  t^{k}e^{-t}\dd{t}=k!$. We have
+  t^{k}e^{-t}\dd{t}=k!$. We know that $\lim_{t\to\infty}t^ae^{-t}=0$, and
+  $0^ae^0=0$ for $a\ne0$. We have
   \begin{align*}
     \int_0^\infty t^{k-1}e^{-t}\dd{t} =
     \underbrace{\cancelto{0}{e^{-t}\cdot\frac{t^k}{k}\Big\vert_0^\infty} +
@@ -46,21 +44,165 @@ $\lim_{m\to\infty}\lim_{n\to\infty}$ throughout this homework.
   Thus, the induction step holds. Thus we have proved the proposition by
   induction for all $x\ge 1$.
 \end{proof}
+\end{Answer}
 
-\begin{exercise}{11}
+\begin{Exercise}[number=11]
   Proof or disproof: if $R=[a,b]\times[c,d]$ and $f(x,y)=g(x)+h(y)$, where
-  $g(x)$ and $h(y)$
-\end{exercise}
+  $g(x)$ and $h(y)$ are single-variable functions, then
+  \[
+    \int_R f(x,y)\dd{A} = \int_a^bg(x)\dd{x} + \int_c^d h(y)\dd{y}.
+  \]
+\end{Exercise}
 
-\begin{exercise}{16}
+\begin{Answer}[number=11]
+\begin{proof}
+  The statement above is false. A counter example can be established by the
+  setting  $[a,b]\times[c,d]=[0,1]\times[0,3], g(x) = 1$, and $h(x)=2$. We
+  have
+  \begin{align*}
+    \int_R f(x,y)\dd{A} &= \int_a^b\int_c^dg(x) +  h(y)\dd{x}\dd{y} \\
+    &= \int_0^1\int_0^3 1 \dd{x}\dd{y} + \int_0^1\int_0^3 2 \dd{x}\dd{y} \\
+    &= 1\cdot(3-0)\cdot(1-0) + 2\cdot(3-0)\cdot(1-0) = 9.
+  \end{align*}
+  However, the value of $\int_a^bg(x)\dd{x} +  \int_c^dh(y)\dd{y}$ is
+  \begin{align*}
+    \int_a^bg(x)\dd{x} +  \int_c^dh(y)\dd{y}
+    &= \int_0^1 1\dd{x} + \int_0^3 2\dd{y} \\
+    &= 1\cdot(1-0) + 2\cdot(3-0) = 7.
+  \end{align*}
+  This completes the disproof, since $7\ne9$.
+\end{proof}
+\end{Answer}
+
+\begin{Exercise}[number=12]
+  Let $g(y)$ be an abbreviation for the function $\int_5^8f(x,y)\dd{x}$. Write
+  out the Riemann sum approximation for $\int_7^8 g(y)\dd{y}$ by using two
+  intervals and left endpoints. Write out this expression two different ways,
+  first using the notation $g(y)$ and then using the notation
+  $\int_5^8f(x,y)\dd{x}$.
+\end{Exercise}
+
+\begin{Answer}[number=12]
+  The expression for the integral in the $g(y)$ form is
+  \begin{align*}
+    \int_7^8 g(y) \dd{y} &= \sum_{i=1}^2g(y_i^*)(\frac{8-7}{2}) \\
+    &=\underbrace{\frac{(g(7)+g(7.5))}{2}}_\text{left points}.
+  \end{align*}
+  The expression for the integral in the $f(x,y)$ form is
+  \begin{align*}
+    \int_7^8 g(y) \dd{y} &= \int_7^8\int_5^8f(x,y)\dd{x}\dd{y} \\
+    &= \sum_{i=1}^2\sum_{j=1}^2f(x_i^*,y_i^*)(\frac{8-5}{2})(\frac{8-7}{2}) \\
+    &= \underbrace{\frac{3\big(f(5,7)+f(6.5,7.5)\big)}{4}}_\text{left
+    points}.
+  \end{align*}
+\end{Answer}
+
+\begin{Answer}[number=13]
+  \emph{15.3.15:} One loop of rose is in the region $S$ that is bounded by
+  $-\frac{\pi}{6}\le\theta\le\frac{\pi}{6}$ and $0\le r\le\cos(3\theta)$, thus
+  the area is
+  \[\int_{-\frac{\pi}{6}}^{\frac{\pi}{6}}\int_0^{\cos(3\theta)}1 r\dd{r}\dd{\theta}.\]
+
+  \emph{15.3.21:} The bottom of the solid is bounded by $x^2+y^2\le1$, which is
+  an unit circle that is bounded by $0\le r\le 1$ and $0\le\theta\le2\pi$ in
+  the polar coordinate. The top of the solid is bounded by $2x+y+z=4$, which is
+  $z=4-2r\cos(\theta)-r\sin(\theta)$ in the polar coordinate. Thus, the volume
+  of the solid is given by
+  \[
+    \iint_0^{2\pi}\int_0^1 [4-2r\cos(\theta)-r\sin(\theta)] r \dd{r}
+    \dd{\theta}.
+  \]
+
+  \emph{15.3.24:} The solid is bounded by $z=1+2x^2+2y^2$ and $z=7$, and their
+  intersection is $7=1+2x^2+2y^2$, which is in turn $x^2+y^2=3$. Also, the
+  function $z=1+2x^2+2y^2$ in polar coordinate is $z=1+2r^2$. Thus, the volume
+  of the solid is given by
+  \[
+    \int_0^{\frac{\pi}{2}}\int_0^{\sqrt{3}}[7-(1+2r^2)]r\dd{r}\dd{\theta}.
+  \]
+\end{Answer}
+
+\begin{Exercise}[number=14]
+  Let $u = 5x + 3y$.
+  \begin{enumerate}
+    \item Sketch the region bounded by the lines $x=2, x=3, u=12$ and $u=13$.
+      Let $S$ denote this region.
+    \item Find, with proof, a formula for $\Delta A$ in terms of $\Delta x$ and
+      $\Delta u$. You can use without proof a formula for the area of a
+      parallelogram.
+    \item Compute $\iint_S (x+y) \dd{A}$ as an iterated integral in terms of
+      $x$ and $y$.
+    \item Compute $\iint_S (x+y) \dd{A}$ as an iterated integral in terms of
+      $x$ and $u$.
+  \end{enumerate}
+\end{Exercise}
+
+\begin{Answer}[number=14]
+  \begin{enumerate}
+    \item \includegraphics[width=5cm, height=5cm]{./plot.pdf}
+    \item \begin{proof}
+        We can calculate $\Delta u$ by using the equality $u=5x+3y$. We have
+        \begin{align*}
+          u_i &= 5x+3y_i,\\
+          u_{i-1} &= 5x+3y_{i-1},\\
+          \Delta u = u_i - u_{i-1} &= (5x+3y_i) - (5x+3y_{i-1}) \\
+          &= 3y_i - y_{i-1} = 3\Delta y.
+        \end{align*}
+        We know that $\Delta A$ is equal to $\Delta x\cdot\Delta y$. Thus we
+        have
+        \[
+          \Delta A = \Delta x\cdot \Delta y = \Delta x\cdot\frac{\Delta u}{3}.
+        \]
+        The proof is completed.
+  \end{proof}
+  \item Integrating the integral $\iint_S (x+y) \dd{A}$ in terms of $x$ and $y$
+    is bounded by the lines $x=2, x=3, y=\frac{12-5x}{3}$ and
+      $y=\frac{13-5x}{3}$, since we know that $u=5x+3y$. We have
+      \begin{align*}
+        &\int_2^3\int_{(12-5x)/3}^{(13-5x)/3} x+y \dd{y}\dd{x} =
+        \int_2^3 xy+\frac{y^2}{2}\Big\vert_{(12-5x)/3}^{(13-5x)/3}\dd{x} \\
+        =& \int_2^3 \frac{1}{3} + \frac{25-10x}{18}\dd{x} = \big( \frac{1}{3}
+        \cdot \frac{x^2}{2} + \frac{25x}{18} - \frac{10}{18}\cdot\frac{x^2}{2}
+        \big) \\
+        =& \frac{5}{6} + \frac{25}{18} - \frac{25}{36} = \frac{5}{6}.
+      \end{align*}
+    \item Integrating the integral $\iint_S (x+y) \dd{A}$ in terms of $x$ and
+      $u$ is bounded by the lines $x=2, x=3, u=12$ and $u=13$. We have to
+      transform the integrand $x+y$ to a form that is only depend on $u$ and
+      $x$ by the relation $u=5x+3y$. We have
+      \[
+        x+y = x + \frac{u-5x}{3} = \frac{u-2x}{3}.
+      \]
+      Thus the integral is now
+      \begin{align*}
+        &\int_2^3\int_{12}^{13}\frac{u-2x}{3}
+        \underbrace{\frac{1}{3}\dd{u}\dd{x}}_\text{from part (2)} =
+        \frac{1}{9}\int_2^3(\frac{u^2}{2}-2xu)\Big\vert_{u=12}^{u=13}\dd{x} \\
+        =& \frac{1}{9} \cdot (\frac{u^2}{2}\vert_{12}^{13}\cdot x\vert_2^3 -
+        2\cdot \frac{x^2}{2}\vert_2^3\cdot u\vert_{12}^{13}) \\
+        &= \frac{25-10}{18} = \frac{5}{6}.
+      \end{align*}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=15]
+  The ``proof'' is incorrect since $\sqrt{2}$ cannot represent all irrational
+  numbers, and a special case is not enough to support proof by contradiction.
+  In addition, a simple counter example
+  \[\underbrace{\sqrt{2}}_\text{irrational} +
+  \underbrace{(-\sqrt{2})}_\text{irrational} = \underbrace{0}_\text{rational}.\]
+  is enough to disprove the proposition.
+\end{Answer}
+
+\begin{Exercise}[number=16]
   What is the domain of the function $\frac{1}{\sqrt{-\log(u)}}$? Compute that
   \[
     \int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}} = \sqrt{\pi}
   \]
-\end{exercise}
+\end{Exercise}
 
-\begin{answer}{16}
-  The domain of the function $\frac{1}{\sqrt{-\log(u)}}$ is $[0,1]$. The
+\begin{Answer}[number=16]
+  The domain of the function $\frac{1}{\sqrt{-\log(u)}}$ is $(0,1)$. The
   integral
   \[
     \int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}} = \sqrt{\pi}
@@ -87,6 +229,6 @@ $\lim_{m\to\infty}\lim_{n\to\infty}$ throughout this homework.
     \dd{y}=2x\dd{x} \\
     &= 2\int_0^\infty e^{-x^2} \dd{x} = 2\frac{\sqrt{\pi}}{2} = \sqrt{\pi}
   \end{align*}
-\end{answer}
+\end{Answer}
 
 \end{document}
