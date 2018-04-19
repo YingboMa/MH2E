@@ -1,7 +1,7 @@
 \documentclass[8pt,twocolumn]{article}
 \input{../typesetting.tex}
 \author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
-\title{\vspace{-1.5cm}Homework 2}
+\title{\vspace{-1.cm}Homework 2}
 \date{April 16, 2018}
 
 \begin{document}
@@ -28,18 +28,19 @@
   \emph{Induction step:} Fix any integer $k\ge 1$, and assume $\int_0^\infty
   t^{k-1}e^{-t}\dd{t}=(k-1)!$, then we want to show $\int_0^\infty
   t^{k}e^{-t}\dd{t}=k!$. We know that $\lim_{t\to\infty}t^ae^{-t}=0$, and
-  $0^ae^0=0$ for $a\ne0$. We have
+  $0^ae^0=0$ for $a\ne0$. We see that integration by parts yields the following
+  expression.
   \begin{align*}
     \int_0^\infty t^{k-1}e^{-t}\dd{t} =
     \underbrace{\cancelto{0}{e^{-t}\cdot\frac{t^k}{k}\Big\vert_0^\infty} +
     \frac{1}{k}\int_0^\infty t^ke^{-t} \dd{t}}_\text{integration by parts}.
   \end{align*}
-  We can then do
+  By the induction hypothesis, we see that the following holds.
   \begin{align*}
     \int_0^\infty t^{k}e^{-t}\dd{t} &= k\cdot\frac{1}{k}\int_0^\infty t^ke^{-t}
     \dd{t}=k\cdot \int_0^\infty t^{k-1}e^{-t}\dd{t}\\
     &=k\cdot (k-1)!\qq{by the induction hypothesis}\\
-    &=x!.
+    &=k!.
   \end{align*}
   Thus, the induction step holds. Thus we have proved the proposition by
   induction for all $x\ge 1$.
@@ -50,17 +51,17 @@
   Proof or disproof: if $R=[a,b]\times[c,d]$ and $f(x,y)=g(x)+h(y)$, where
   $g(x)$ and $h(y)$ are single-variable functions, then
   \[
-    \int_R f(x,y)\dd{A} = \int_a^bg(x)\dd{x} + \int_c^d h(y)\dd{y}.
+    \iint_R f(x,y)\dd{A} = \int_a^bg(x)\dd{x} + \int_c^d h(y)\dd{y}.
   \]
 \end{Exercise}
 
 \begin{Answer}[number=11]
 \begin{proof}
   The statement above is false. A counter example can be established by the
-  setting  $[a,b]\times[c,d]=[0,1]\times[0,3], g(x) = 1$, and $h(x)=2$. We
+  setting  $[a,b]\times[c,d]=[0,1]\times[0,3], g(x) = 1$, and $h(y)=2$. We
   have
   \begin{align*}
-    \int_R f(x,y)\dd{A} &= \int_a^b\int_c^dg(x) +  h(y)\dd{x}\dd{y} \\
+    \iint_R f(x,y)\dd{A} &= \int_a^b\int_c^dg(x) +  h(y)\dd{x}\dd{y} \\
     &= \int_0^1\int_0^3 1 \dd{x}\dd{y} + \int_0^1\int_0^3 2 \dd{x}\dd{y} \\
     &= 1\cdot(3-0)\cdot(1-0) + 2\cdot(3-0)\cdot(1-0) = 9.
   \end{align*}
@@ -91,8 +92,9 @@
   The expression for the integral in the $f(x,y)$ form is
   \begin{align*}
     \int_7^8 g(y) \dd{y} &= \int_7^8\int_5^8f(x,y)\dd{x}\dd{y} \\
-    &= \sum_{i=1}^2\sum_{j=1}^2f(x_i^*,y_i^*)(\frac{8-5}{2})(\frac{8-7}{2}) \\
-    &= \underbrace{\frac{3\big(f(5,7)+f(6.5,7.5)\big)}{4}}_\text{left
+    &=
+    \sum_{i=1}^2\Big[\sum_{j=1}^1f(x_{ij}^*,y_{ij}^*)(\frac{8-5}{1})\Big](\frac{8-7}{2}) \\
+    &= \underbrace{\frac{3\big(f(5,7)+f(5,7.5)\big)}{2}}_\text{left
     points}.
   \end{align*}
 \end{Answer}
@@ -109,7 +111,7 @@
   $z=4-2r\cos(\theta)-r\sin(\theta)$ in the polar coordinate. Thus, the volume
   of the solid is given by
   \[
-    \iint_0^{2\pi}\int_0^1 [4-2r\cos(\theta)-r\sin(\theta)] r \dd{r}
+    \int_0^{2\pi}\int_0^1 [4-2r\cos(\theta)-r\sin(\theta)] r \dd{r}
     \dd{\theta}.
   \]
 
@@ -160,8 +162,8 @@
       $y=\frac{13-5x}{3}$, since we know that $u=5x+3y$. We have
       \begin{align*}
         &\int_2^3\int_{(12-5x)/3}^{(13-5x)/3} x+y \dd{y}\dd{x} =
-        \int_2^3 xy+\frac{y^2}{2}\Big\vert_{(12-5x)/3}^{(13-5x)/3}\dd{x} \\
-        =& \int_2^3 \frac{1}{3} + \frac{25-10x}{18}\dd{x} = \big( \frac{1}{3}
+        \int_2^3 xy+\frac{y^2}{2}\Big\vert_{y=(12-5x)/3}^{y=(13-5x)/3}\dd{x} \\
+        =& \int_2^3 \frac{1}{3} + \frac{25-10x}{18}\dd{x} = \big( \frac{x}{3}
         \cdot \frac{x^2}{2} + \frac{25x}{18} - \frac{10}{18}\cdot\frac{x^2}{2}
         \big) \\
         =& \frac{5}{6} + \frac{25}{18} - \frac{25}{36} = \frac{5}{6}.
@@ -178,8 +180,9 @@
         &\int_2^3\int_{12}^{13}\frac{u-2x}{3}
         \underbrace{\frac{1}{3}\dd{u}\dd{x}}_\text{from part (2)} =
         \frac{1}{9}\int_2^3(\frac{u^2}{2}-2xu)\Big\vert_{u=12}^{u=13}\dd{x} \\
-        =& \frac{1}{9} \cdot (\frac{u^2}{2}\vert_{12}^{13}\cdot x\vert_2^3 -
-        2\cdot \frac{x^2}{2}\vert_2^3\cdot u\vert_{12}^{13}) \\
+        =& \frac{1}{9} \cdot (\frac{u^2}{2}\vert_{u=12}^{u=13}\cdot
+        x\vert_{x=2}^{x=3} -
+        2\cdot \frac{x^2}{2}\vert_{x=2}^{x=3}\cdot u\vert_{u=12}^{u=13}) \\
         &= \frac{25-10}{18} = \frac{5}{6}.
       \end{align*}
   \end{enumerate}
@@ -218,7 +221,8 @@
     = \sqrt{\frac{\pi}{2}\int_0^\infty e^{-r^2} \cdot r \dd{r}} \\
     &= \sqrt{\frac{\pi}{4}\int_{-\infty}^{0} e^c \dd{c}},\quad c =
     -r^2, \dd{c} = -2\dd{r}  \\
-    &= \sqrt{\frac{\pi}{4}(e^0-e^{-\infty})} = \frac{\sqrt{\pi}}{2}
+    &= \sqrt{\frac{\pi}{4}\lim_{x\to-\infty}e^f\vert^0_x} =
+    \sqrt{\frac{\pi}{4}\cdot 1} = \frac{\sqrt{\pi}}{2}
   \end{align*}
   Then, we can calculate $\int_0^1 \frac{\dd{u}}{\sqrt{-\log(u)}}$ via
   substitution.
