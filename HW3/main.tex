@@ -50,7 +50,7 @@
   In this question, the domain of integration is bounded by $x=0, y=0$, and
   $2x+y+z=4$. Thus, we have $z=4-2x-y$, $y=4-2x$ and $x=0$, if we solve for $z$
   and set another variable to $0$.
-  \[D = \{(x,y,z) \mid 0\ge x\ge 2, 0\ge y\ge 4-2x, 0\ge 4-2x-y\},\] thus the
+  \[D = \{(x,y,z) \mid 0\le x\le 2, 0\le y\le 4-2x, 0\le 4-2x-y\},\] thus the
   integral is
   \[\int_0^2\int_0^{4-2x}\int_0^{4-2x-y}\dd{z}\dd{y}\dd{x}.\]
   \emph{15.7.20:}
@@ -60,19 +60,19 @@
   cylindrical coordinate are $r\cos\theta$ and $r\sin\theta$ respectively. We
   are going to integrate in the set
   \[
-    D = \{(\theta, r, z) \mid 0\ge\theta\ge2\pi, 0\ge r\ge4, 0\ge z\ge
+    D = \{(\theta, r, z) \mid 0\le\theta\le2\pi, 1\le r\le4, 0\le z\le
     r\sin(\theta)+4\}.
   \]
   Thus, the integral is
   \begin{align*}
-    \int_0^4\int_0^{2\pi}\int_0^{r\sin(\theta)+4} (r\cos\theta-
+    \int_1^4\int_0^{2\pi}\int_0^{r\sin(\theta)+4} (r\cos\theta-
     r\sin\theta)\cdot r\dd{z}\dd{\theta}\dd{r}
   \end{align*}
   \emph{15.7.23:}
   \begin{align*}
     &D = \{(r,\theta,z) \mid 0\le \theta\le2\pi, 0\le r\le 1, r\le z\le
     \sqrt{2-r^2}\} \\
-    &\int_0^1\int_0^{2\pi}\int_r^{\sqrt{2-r^2}} r\dd{z}\dd{\theta}\dd{r}
+    &\int_0^{2\pi}\int_0^1\int_r^{\sqrt{2-r^2}} r\dd{z}\dd{r}\dd{\theta}
   \end{align*}
   \emph{15.8.24:}
   \begin{align*}
@@ -93,12 +93,12 @@
   \emph{15.6.31:}
   \begin{align*}
     E =&  \{ (x,y,z) \mid -2 \le x \le 2, x^2 \le y \le 4,  0 \le z \le 2-\frac{y}{2} \} \\
-    = &\{ (x,y,z) \mid -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4, 0 \le z \le 2-\frac{y}{2} \} \\
-    = &\{ (x,y,z) \mid -\sqrt{y} \le x\le \sqrt{y}, 0 \le z \le 2-\frac{y}{2}, 0 \le y \le 4 \} \\
-    = &\{ (x,y,z) \mid -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4-2z, 0 \le z \le 2 \} \\
-    = &\{ (x,y,z) \mid -2 \le x \le 2, x^2 \le y \le 4-2z, 0 \le z \le 2-\frac{x^2}{2} \} \\
-    = &\{ (x,y,z) \mid -\sqrt{4-2z} \le x\le \sqrt{4-2z},\\ &x^2 \le y \le
-    4-2z, 0 \le z \le 2 \}.
+    = &\{ (x,y,z) \mid 0 \le y \le 4, -\sqrt{y} \le x\le \sqrt{y}, 0 \le z \le 2-\frac{y}{2} \} \\
+    = &\{ (x,y,z) \mid 0 \le y \le 4, 0 \le z \le 2-\frac{y}{2}, -\sqrt{y} \le x\le \sqrt{y} \} \\
+    = &\{ (x,y,z) \mid 0 \le z \le 2, 0 \le y \le 4-2z, -\sqrt{y} \le x\le \sqrt{y} \} \\
+    = &\{ (x,y,z) \mid -2 \le x \le 2, 0 \le z \le 2-\frac{x^2}{2}, x^2 \le y \le 4-2z \} \\
+    = &\{ (x,y,z) \mid 0 \le z \le 2, -\sqrt{4-2z} \le x\le \sqrt{4-2z},\\ &x^2 \le y \le
+    4-2z \}.
   \end{align*}
   Thus, the integrals are
   \begin{align*}
@@ -107,8 +107,8 @@
  = &\int_0^4\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^{2-\frac{y}{2}} f(x,y,z)\dd{z}\dd{x}\dd{y} \\
  = &\int_0^4 \int_0^{2-\frac{y}{2}} \int_{-\sqrt{y}}^{\sqrt{y}}
     f(x,y,z)\dd{x}\dd{z}\dd{y} \\
- = &\int_0^2 \int_{-\sqrt{y}}^{\sqrt{y}} \int_0^{4-2z} f(x,y,z) \dd{y}\dd{x}\dd{z} \\
- = &\int_{-2}^2 \int_{x^2}^{4-2z} \int_0^{2-\frac{x^2}{2}} f(x,y,z) \dd{z}\dd{y}\dd{x} \\
+ = &\int_0^2 \int_0^{4-2z} \int_{-\sqrt{y}}^{\sqrt{y}} f(x,y,z) \dd{x}\dd{y}\dd{z} \\
+ = &\int_{-2}^2 \int_0^{2-\frac{x^2}{2}} \int_{x^2}^{4-2z} f(x,y,z) \dd{y}\dd{z}\dd{x} \\
  = &\int_0^2 \int_{-\sqrt{4-2z}}^{\sqrt{4-2z}} \int_{x^2}^{4-2z} f(x,y,z) \dd{y}\dd{x}\dd{z}.
   \end{align*}
 \end{Answer}
