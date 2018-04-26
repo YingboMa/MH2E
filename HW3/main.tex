@@ -1,8 +1,8 @@
 \documentclass[8pt,twocolumn]{article}
 \input{../typesetting.tex}
 \author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
-\title{\vspace{-1.cm}Homework 2}
-\date{April 22, 2018}
+\title{\vspace{-1.cm}Homework 3}
+\date{April 25, 2018}
 
 \begin{document}
 \maketitle
@@ -18,8 +18,8 @@
   Therefore the second base case holds.
 
   \emph{Induction step:} Fix any integer $k\ge 1$, we assume $F_k\ge
-  \varphi^{k-2}$ and $F_{k-1}\ge\varphi^{k-3}$, then we want to show $F_{k+1}
-  \ge \varphi^{k-1}$ holds. First
+  \varphi^{k-2}$ and $F_{k-1}\ge\varphi^{k-3}$, then we want to show that
+  $F_{k+1} \ge \varphi^{k-1}$ holds. First
   we know that
   \begin{align*}
     \varphi^2 &= 1+\varphi \\
@@ -50,9 +50,9 @@
   In this question, the domain of integration is bounded by $x=0, y=0$, and
   $2x+y+z=4$. Thus, we have $z=4-2x-y$, $y=4-2x$ and $x=0$, if we solve for $z$
   and set another variable to $0$.
-  \[D = \{(x,y,z) \,\big\vert\, 0\ge x\ge 2, 0\ge y\ge 4-2x, 0\ge 4-2x-y\},\] thus the
+  \[D = \{(x,y,z) \mid 0\ge x\ge 2, 0\ge y\ge 4-2x, 0\ge 4-2x-y\},\] thus the
   integral is
-  \[\int_0^2\int_0^{4-2x}\int_0^{4-2x-y}\dd{z}\dd{y}\dd{x}\].
+  \[\int_0^2\int_0^{4-2x}\int_0^{4-2x-y}\dd{z}\dd{y}\dd{x}.\]
   \emph{15.7.20:}
   The domain of integration is bounded by $x^2+y^2=1, x^2+y^2=16, z=0$, and
   $z=y+4$. We can convert them into a cylindrical coordinate. We have $r=1,
@@ -60,7 +60,7 @@
   cylindrical coordinate are $r\cos\theta$ and $r\sin\theta$ respectively. We
   are going to integrate in the set
   \[
-    D = \{(\theta, r, z) \,\big\vert\, 0\ge\theta\ge2\pi, 0\ge r\ge4, 0\ge z\ge
+    D = \{(\theta, r, z) \mid 0\ge\theta\ge2\pi, 0\ge r\ge4, 0\ge z\ge
     r\sin(\theta)+4\}.
   \]
   Thus, the integral is
@@ -70,27 +70,27 @@
   \end{align*}
   \emph{15.7.23:}
   \begin{align*}
-    &D = \{(r,\theta,z) \,\big\vert\, 0\le \theta\le2\pi, 0\le r\le 1, r\le z\le
+    &D = \{(r,\theta,z) \mid 0\le \theta\le2\pi, 0\le r\le 1, r\le z\le
     \sqrt{2-r^2}\} \\
     &\int_0^1\int_0^{2\pi}\int_r^{2-r^2} r\dd{z}\dd{\theta}\dd{r}
   \end{align*}
   \emph{15.8.24:}
   \begin{align*}
-    &D = \{(\rho, \theta, \phi) \,\big\vert\, 0\le \rho \le 3, 0\le \theta\le \pi,
+    &D = \{(\rho, \theta, \phi) \mid 0\le \rho \le 3, 0\le \theta\le \pi,
     0\le\phi\le \pi \} \\
     &\int_0^{2\pi}\int_0^{\frac{\pi}{2}}\int_0^3
-    \left[\rho\sin(\theta)\sin(\phi)\right]^2\cdot\rho^2\cdot\sin(\theta) \dd{\rho}\dd{\theta}\dd{\phi}
+    \left[\rho\sin(\theta)\sin(\phi)\right]^2\cdot\rho^2\sin(\theta) \dd{\rho}\dd{\theta}\dd{\phi}
   \end{align*}
   \emph{15.8.26:}
   \begin{align*}
-    &D = {(\rho, \theta, \phi)\,\big\vert\,1\le\rho\le2, 0\le\theta\le2\pi,
+    &D = {(\rho, \theta, \phi)\mid1\le\rho\le2, 0\le\theta\le2\pi,
     0\le\phi\le\frac{\pi}{4}} \\
     &\int_0^{\frac{\pi}{4}}\int_0^{2\pi}\int_1^2 \rho \cdot \rho^2\sin(\phi) \dd{\rho}\dd{\theta}\dd{\phi}
   \end{align*}
 \end{Answer}
 
 \begin{Answer}[number=20]
-  \emph{15.6.31}
+  \emph{15.6.31:}
   \begin{align*}
     E =&  \{ (x,y,z) \, \big\vert \, -2 \le x \le 2, x^2 \le y \le 4,  0 \le z \le 2-\frac{y}{2} \} \\
     = &\{ (x,y,z) \, \big\vert \, -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4, 0 \le z \le 2-\frac{y}{2} \} \\
