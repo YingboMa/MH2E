@@ -72,13 +72,13 @@
   \begin{align*}
     &D = \{(r,\theta,z) \mid 0\le \theta\le2\pi, 0\le r\le 1, r\le z\le
     \sqrt{2-r^2}\} \\
-    &\int_0^1\int_0^{2\pi}\int_r^{2-r^2} r\dd{z}\dd{\theta}\dd{r}
+    &\int_0^1\int_0^{2\pi}\int_r^{\sqrt{2-r^2}} r\dd{z}\dd{\theta}\dd{r}
   \end{align*}
   \emph{15.8.24:}
   \begin{align*}
-    &D = \{(\rho, \theta, \phi) \mid 0\le \rho \le 3, 0\le \theta\le \pi,
-    0\le\phi\le \pi \} \\
-    &\int_0^{2\pi}\int_0^{\frac{\pi}{2}}\int_0^3
+    &D = \{(\rho, \theta, \phi) \mid 0\le \rho \le 3, -\frac{\pi}{2}\le
+    \theta\le \frac{\pi}{2}, 0\le\phi\le \pi \} \\
+    &\int_0^{\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\int_0^3
     \left[\rho\sin(\theta)\sin(\phi)\right]^2\cdot\rho^2\sin(\theta) \dd{\rho}\dd{\theta}\dd{\phi}
   \end{align*}
   \emph{15.8.26:}
@@ -92,12 +92,12 @@
 \begin{Answer}[number=20]
   \emph{15.6.31:}
   \begin{align*}
-    E =&  \{ (x,y,z) \, \big\vert \, -2 \le x \le 2, x^2 \le y \le 4,  0 \le z \le 2-\frac{y}{2} \} \\
-    = &\{ (x,y,z) \, \big\vert \, -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4, 0 \le z \le 2-\frac{y}{2} \} \\
-    = &\{ (x,y,z) \, \big\vert \, -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4, 0 \le z \le 2-\frac{y}{2} \} \\
-    = &\{ (x,y,z) \, \big\vert \, -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4-2z, 0 \le z \le 2 \} \\
-    = &\{ (x,y,z) \, \big\vert \, -2 \le x \le 2, x^2 \le y \le 4-2z, 0 \le z \le 2-\frac{x^2}{2} \} \\
-    = &\{ (x,y,z) \, \big\vert \, -\sqrt{4-2z} \le x\le \sqrt{4-2z},\\ &x^2 \le y \le
+    E =&  \{ (x,y,z) \mid -2 \le x \le 2, x^2 \le y \le 4,  0 \le z \le 2-\frac{y}{2} \} \\
+    = &\{ (x,y,z) \mid -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4, 0 \le z \le 2-\frac{y}{2} \} \\
+    = &\{ (x,y,z) \mid -\sqrt{y} \le x\le \sqrt{y}, 0 \le z \le 2-\frac{y}{2}, 0 \le y \le 4 \} \\
+    = &\{ (x,y,z) \mid -\sqrt{y} \le x\le \sqrt{y}, 0 \le y \le 4-2z, 0 \le z \le 2 \} \\
+    = &\{ (x,y,z) \mid -2 \le x \le 2, x^2 \le y \le 4-2z, 0 \le z \le 2-\frac{x^2}{2} \} \\
+    = &\{ (x,y,z) \mid -\sqrt{4-2z} \le x\le \sqrt{4-2z},\\ &x^2 \le y \le
     4-2z, 0 \le z \le 2 \}.
   \end{align*}
   Thus, the integrals are
@@ -105,7 +105,8 @@
     &\int_{-2}^2 \int_{x^2}^4
     \int_0^{2-\frac{y}{2}} f(x,y,z) \dd{z}\dd{y}\dd{x} \\
  = &\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^4 \int_0^{2-\frac{y}{2}} f(x,y,z)\dd{z}\dd{y}\dd{x} \\
- = &\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^4 \int_0^{2-\frac{y}{2}} f(x,y,z)\dd{z}\dd{y}\dd{x} \\
+ = &\int_0^4 \int_0^{2-\frac{y}{2}} \int_{-\sqrt{y}}^{\sqrt{y}}
+    f(x,y,z)\dd{x}\dd{z}\dd{y} \\
  = &\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^{4-2z} \int_0^2 f(x,y,z) \dd{z}\dd{y}\dd{x} \\
  = &\int_{-2}^2 \int_{x^2}^{4-2z} \int_0^{2-\frac{x^2}{2}} f(x,y,z) \dd{z}\dd{y}\dd{x} \\
  = &\int_{-\sqrt{4-2z}}^{\sqrt{4-2z}} \int_{x^2}^{4-2z} \int_0^2 f(x,y,z) \dd{z}\dd{y}\dd{x}.
