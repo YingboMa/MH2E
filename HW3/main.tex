@@ -104,12 +104,12 @@
   \begin{align*}
     &\int_{-2}^2 \int_{x^2}^4
     \int_0^{2-\frac{y}{2}} f(x,y,z) \dd{z}\dd{y}\dd{x} \\
- = &\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^4 \int_0^{2-\frac{y}{2}} f(x,y,z)\dd{z}\dd{y}\dd{x} \\
+ = &\int_0^4\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^{2-\frac{y}{2}} f(x,y,z)\dd{z}\dd{x}\dd{y} \\
  = &\int_0^4 \int_0^{2-\frac{y}{2}} \int_{-\sqrt{y}}^{\sqrt{y}}
     f(x,y,z)\dd{x}\dd{z}\dd{y} \\
- = &\int_{-\sqrt{y}}^{\sqrt{y}} \int_0^{4-2z} \int_0^2 f(x,y,z) \dd{z}\dd{y}\dd{x} \\
+ = &\int_0^2 \int_{-\sqrt{y}}^{\sqrt{y}} \int_0^{4-2z} f(x,y,z) \dd{y}\dd{x}\dd{z} \\
  = &\int_{-2}^2 \int_{x^2}^{4-2z} \int_0^{2-\frac{x^2}{2}} f(x,y,z) \dd{z}\dd{y}\dd{x} \\
- = &\int_{-\sqrt{4-2z}}^{\sqrt{4-2z}} \int_{x^2}^{4-2z} \int_0^2 f(x,y,z) \dd{z}\dd{y}\dd{x}.
+ = &\int_0^2 \int_{-\sqrt{4-2z}}^{\sqrt{4-2z}} \int_{x^2}^{4-2z} f(x,y,z) \dd{y}\dd{x}\dd{z}.
   \end{align*}
 \end{Answer}
 
