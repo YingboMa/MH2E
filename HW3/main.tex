@@ -17,7 +17,7 @@
   \emph{Base case 2:} If $n=2$, we have $F_2 = 1 \ge \varphi^{0} = 1$.
   Therefore the second base case holds.
 
-  \emph{Induction step:} Fix any integer $k\ge 1$, we assume $F_k\ge
+  \emph{Induction step:} Fix any integer $k\ge 2$, we assume $F_k\ge
   \varphi^{k-2}$ and $F_{k-1}\ge\varphi^{k-3}$, then we want to show that
   $F_{k+1} \ge \varphi^{k-1}$ holds. First
   we know that
@@ -76,15 +76,15 @@
   \end{align*}
   \emph{15.8.24:}
   \begin{align*}
-    &D = \{(\rho, \theta, \phi) \mid 0\le \rho \le 3, -\frac{\pi}{2}\le
-    \theta\le \frac{\pi}{2}, 0\le\phi\le \pi \} \\
-    &\int_0^{\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\int_0^3
+    &D = \{(\rho, \theta, \phi) \mid 0\le \rho \le 3, 0\le
+    \theta\le \pi, 0\le\phi\le \pi \} \\
+    &\int_0^{\pi}\int_{0}^{\pi}\int_0^3
     \left[\rho\sin(\theta)\sin(\phi)\right]^2\cdot\rho^2\sin(\theta) \dd{\rho}\dd{\theta}\dd{\phi}
   \end{align*}
   \emph{15.8.26:}
   \begin{align*}
-    &D = {(\rho, \theta, \phi)\mid1\le\rho\le2, 0\le\theta\le2\pi,
-    0\le\phi\le\frac{\pi}{4}} \\
+    &D = \{(\rho, \theta, \phi)\mid1\le\rho\le2, 0\le\theta\le2\pi,
+    0\le\phi\le\frac{\pi}{4}\} \\
     &\int_0^{\frac{\pi}{4}}\int_0^{2\pi}\int_1^2 \rho \cdot \rho^2\sin(\phi) \dd{\rho}\dd{\theta}\dd{\phi}
   \end{align*}
 \end{Answer}
