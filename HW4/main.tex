@@ -2,7 +2,7 @@
 \input{../typesetting.tex}
 \author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
 \title{\vspace{-1.cm}Homework 4}
-\date{April 25, 2018}
+\date{May 07, 2018}
 
 \begin{document}
 \maketitle
@@ -26,8 +26,8 @@
   Then the Jacobian matrix is
   \[
     J(x,y)={\begin{bmatrix}
-      \pdv{u}{x}&\pdv{v}{x}\\
-      \pdv{u}{y}&\pdv{v}{y}
+      \pdv{x}{u}&\pdv{x}{v}\\
+      \pdv{y}{u}&\pdv{y}{v}
     \end{bmatrix}}=
     \begin{bmatrix}1/2&1/2\\1/2&-1/2\end{bmatrix},
   \]
@@ -43,7 +43,7 @@
   Let $T_1:(u,v)\mapsto (x,y)$ be given by $(u,v)\mapsto((u+v)/2, (u-v)/2)$.
   The region $R$ consists of all the points in the $xy$-plane satisfying $y\le
   -x+1, y\ge x-1, y\ge x-1,$ and $y\le x+1$.
-  The region $S$ consists of all the points in the $xy$-plane satisfying $u\le
+  The region $S$ consists of all the points in the $uv$-plane satisfying $u\le
   1, v\le 1, u\ge -1,$ and $v\ge -1$.
   We can proof that $T_1$ maps $S$ to $R$ by direct proof. We then have
   \begin{align*}
@@ -69,22 +69,28 @@
     &T_1(T_2(x,y)) = T_1(x+y, x-y) \\= &(\frac{x+y+x-y}{2}, \frac{x+y-x+y}{2}) =
     (x,y).
   \end{align*}
-  The Jacobian matrix is
-  \[
-    J(x,y)={\begin{bmatrix}
-      \pdv{u}{x}&\pdv{v}{x}\\
-      \pdv{u}{y}&\pdv{v}{y}
-    \end{bmatrix}}=
-    \begin{bmatrix}1/2&1/2\\1/2&-1/2\end{bmatrix},
-  \]
-  and $\abs{\det J} = \frac{1}{2}$.
   We next show that $T_2 \circ T_1$ is the identity map on $S$:
   \begin{align*}
     &T_2(T_1(u,v)) = T_2(\frac{u+v}{2}, \frac{u-v}{2}) \\ =
     &(\frac{u+v}{2}+\frac{u-v}{2}, \frac{u+v}{2}-\frac{u-v}{2})=
     (u,v).
   \end{align*}
-
+  The Jacobian matrix is
+  \[
+    J(x,y)={\begin{bmatrix}
+      \pdv{x}{u}&\pdv{x}{v}\\
+      \pdv{y}{u}&\pdv{y}{v}
+    \end{bmatrix}}=
+    \begin{bmatrix}1/2&1/2\\1/2&-1/2\end{bmatrix},
+  \]
+  since we have the transformation
+  \(
+    \begin{cases}
+      u(x,y) = x+y \\
+      v(x,y) = x-y
+    \end{cases},
+  \)
+  and $\abs{\det J} = \frac{1}{2}$.
   Thus, we have the integral as
   \[
     \iint_R e^{x+y} \dd{A} = \int_0^1\int_0^1\frac{1}{2} e^u\dd{u}\dd{v} =
@@ -127,12 +133,22 @@
     \)
     where $A_{n,n}$ is an $n$ by $n$ diagonal matrix, and it is filled with
     real number $r$ in the diagonal. From \cref{lm:matrix}, we know that its
-    determinant is $r^n$. When $r$ is not zero, then, the transformation is
-    one-to-one and onto, since the linear transformation matrix has a non-zero
-    determinant. When $r$ is zero, the transformation is not one-to-one nor
-    onto, however, such transformation maps a $n$-dimensional unit ball into a
-    point which has zero volume, thus the statement is trivially true. This
-    completes the proof.
+    determinant is $r^n$, this implies that for an area enclosed, under the
+    transform, its area is now $r^n$ times. When $r$ is not zero, then, the
+    transformation is one-to-one and onto, since the linear transformation
+    matrix has a non-zero determinant. When $r$ is zero, the transformation is
+    not one-to-one nor onto, however, such transformation maps a
+    $n$-dimensional unit ball into a point which has zero volume, and the point
+    is the boundary itself, so we can still use Jacobian to perform the change
+    of variables. We have $\det(J) = \det(A_{n,n}) = r^n$ for integer $n\ge 1$.
+    We then have
+    \begin{align*}
+      V_1 &= \int_{\sum_{i=1}^n x^i\le 1} 1 \dd{x} \\
+      V_2 &= \int_{\sum_{i=1}^n x^i\le r^n} 1 \dd{u} = \int_{\sum_{i=1}^n x^i\le 1} 1 \abs{\det(J)} \dd{x} = \abs{\det(J)}
+      V_1.
+    \end{align*}
+    Where $V_1$ represents the volume for the unit ball, and $V_2$ represents
+    the volume for the scaled ball. This completes the proof.
   \end{proof}
 \end{Answer}
 
@@ -178,9 +194,24 @@
 
 \begin{Answer}[number=26]
   \begin{enumerate}
-    \item A example can be $10^{-10}\sin(10^{20}x)$. We have
-      $\abs{f(x)}=10^{-10}$ and $\abs{f'(x)}=10^{10}$.
-    \item %\hspace{3cm}
+    \item A example can be $f(x)=10^{-10}\sin(10^{20}x)$. We have
+      $\abs{f(x)}=10^{-10}\le.01$ for all $x$ and $\abs{f'(x)}=10^{10}\ge10^6$ for some $x$.
+    \item The plot for the function $f(x)=10^{-10}\sin(10^{20}x)$ in the
+      $xy$-plane is
+
+    \begin{tikzpicture}
+      \begin{axis}[width=4in,%north east,%axis equal image,
+        domain=0:7*10^(-20),
+        axis lines=middle,
+        enlargelimits,
+        axis line style={shorten >=-0.25cm,shorten <=-0.25cm,latex-latex},
+        ticklabel style={fill=white},
+        extra x ticks={0},
+        xlabel=$x$,ylabel=$y$,
+        clip=false,]
+        \addplot[samples=200]{10^(-10)*sin(10^(20)*deg(x))};% node[fill=white, above]{$10^{-10}\sin(10^{20}x)$};
+      \end{axis}
+    \end{tikzpicture}
     \item \begin{proof}
         We can pick a function that is in the form of $f(x) = a\sin(bx)$ and
         $f'(x)=ab\sin(bx)$. For every fixed $\varepsilon> 0$ and $N> 0$, to
