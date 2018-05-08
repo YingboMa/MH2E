@@ -1,0 +1,229 @@
+\documentclass[8pt,twocolumn]{article}
+\input{../typesetting.tex}
+\author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
+\title{\vspace{-1.cm}Homework 4}
+\date{April 25, 2018}
+
+\begin{document}
+\maketitle
+
+\begin{Answer}[number=21]
+  The transformation $T$ that maps $R$ to $S$ is formed by functions
+  \(
+    \begin{cases}
+      u(x,y) = x+y \\
+      v(x,y) = x-y
+    \end{cases},
+  \)
+  and $S$ is then bounded by $u=0, u=3, v=0,$ and $v=2$. Thus the map from $S$
+  to $R$ is
+  \(
+    \begin{cases}
+      x(u,v) = \frac{u+v}{2} \\
+      y(u,v) = \frac{u-v}{2}
+    \end{cases}.
+  \)
+  Then the Jacobian matrix is
+  \[
+    J(x,y)={\begin{bmatrix}
+      \pdv{u}{x}&\pdv{v}{x}\\
+      \pdv{u}{y}&\pdv{v}{y}
+    \end{bmatrix}}=
+    \begin{bmatrix}1/2&1/2\\1/2&-1/2\end{bmatrix},
+  \]
+  and $\abs{\det J} = \frac{1}{2}$. Thus, the integral is now
+      \[
+    \iint_R (x+y)e^{x^2-y^2}\dd{A} = \int_0^3\int_0^2
+    ue^{uv}\frac{1}{2}\dd{v}\dd{u}.
+  \]
+\end{Answer}
+
+\begin{Answer}[number=22]
+  Let $T_2:(x,y)\mapsto (u,v)$ be given by $(x,y)\mapsto(x+y, x-y)$.
+  Let $T_1:(u,v)\mapsto (x,y)$ be given by $(u,v)\mapsto((u+v)/2, (u-v)/2)$.
+  The region $R$ consists of all the points in the $xy$-plane satisfying $y\le
+  -x+1, y\ge x-1, y\ge x-1,$ and $y\le x+1$.
+  The region $S$ consists of all the points in the $xy$-plane satisfying $u\le
+  1, v\le 1, u\ge -1,$ and $v\ge -1$.
+  We can proof that $T_1$ maps $S$ to $R$ by direct proof. We then have
+  \begin{align*}
+    y\le -x+1 & \Rightarrow y+x \le 1  \Rightarrow u \le 1   \\
+    y\ge x-1  & \Rightarrow y-x \ge -1 \Rightarrow v \le 1   \\
+    y\ge x-1  & \Rightarrow y+x \ge -1 \Rightarrow u \ge -1  \\
+    y\le x+1  & \Rightarrow y-x \le 1  \Rightarrow v \ge -1.
+  \end{align*}
+  We can also proof that $T_2$ maps $R$ to $S$ by direct proof. We have
+  \begin{align*}
+    u \le 1  & \Rightarrow 2u \le 2  \Rightarrow \frac{u+v}{2} + \frac{u-v}{2} \le 1
+    \Rightarrow x+y \le 1\\
+    u \ge -1 & \Rightarrow 2u \ge -2 \Rightarrow \frac{u+v}{2} + \frac{u-v}{2} \ge -1
+    \Rightarrow x+y \ge -1\\
+    v \le 1  & \Rightarrow 2v \le 2  \Rightarrow \frac{v+u}{2} + \frac{v-u}{2} \le 1
+    \Rightarrow x-y \le 1\\
+    v \ge -1 & \Rightarrow 2v \ge -2 \Rightarrow \frac{v+u}{2} + \frac{v-u}{2} \ge -1
+    \Rightarrow x-y \ge -1.
+  \end{align*}
+  Thus, we have demonstrated that $T2: R\mapsto S$ and $T1: S\mapsto R$. We
+  then show that $T_1 \circ T_2$ is the identity map on $R$:
+  \begin{align*}
+    &T_1(T_2(x,y)) = T_1(x+y, x-y) \\= &(\frac{x+y+x-y}{2}, \frac{x+y-x+y}{2}) =
+    (x,y).
+  \end{align*}
+  The Jacobian matrix is
+  \[
+    J(x,y)={\begin{bmatrix}
+      \pdv{u}{x}&\pdv{v}{x}\\
+      \pdv{u}{y}&\pdv{v}{y}
+    \end{bmatrix}}=
+    \begin{bmatrix}1/2&1/2\\1/2&-1/2\end{bmatrix},
+  \]
+  and $\abs{\det J} = \frac{1}{2}$.
+  We next show that $T_2 \circ T_1$ is the identity map on $S$:
+  \begin{align*}
+    &T_2(T_1(u,v)) = T_2(\frac{u+v}{2}, \frac{u-v}{2}) \\ =
+    &(\frac{u+v}{2}+\frac{u-v}{2}, \frac{u+v}{2}-\frac{u-v}{2})=
+    (u,v).
+  \end{align*}
+
+  Thus, we have the integral as
+  \[
+    \iint_R e^{x+y} \dd{A} = \int_0^1\int_0^1\frac{1}{2} e^u\dd{u}\dd{v} =
+    \frac{1}{2}\eval{e^u}_{-1}^1 \eval{v}_{-1}^1 = e - \frac{1}{e}
+  \]
+\end{Answer}
+
+\begin{Answer}[number=23]
+  \begin{lemma}\label{lm:matrix}
+    The determinant of a $n$ by $n$ diagonal matrix $A_{n,n}$ which is filled with
+    real number $r$ in the diagonal is $r^n$ for any integer $n\ge 1$.
+  \end{lemma}
+  \begin{proof}
+    We are going to prove the above lemma by using induction on the variable
+    $n$. The matrix $A_{n,n}$ is a $n$ by $n$ matrix that is in form of
+    $\mqty(\dmat{r,\ddots,r})$, where $r$ is a real number.
+
+    \emph{Base case:} When $n=1$, we have $\det(A_{1,1}) = \det(r) = r = r^1$. Thus
+    the base case holds.
+
+    \emph{Inductive step:} For some fixed integer $n\ge 1$, and assume
+    $\det(A_{n,n}) = r^n$, then we want to show $\det(A_{n+1,n+1}) = r^{n+1}$.
+    By using the Laplace expansion on the first row, we have
+    \begin{align*}
+      \det(A_{n+1,n+1}) = \sum_{j=1}^{N+1}(-1)^{1+j}a_{1j}\det(M_{1j}).
+    \end{align*}
+    By the sparsity pattern of the matrix $A_{n+1,n+1}$, we know the above
+    expression evaluates to
+    \begin{align*}
+      1\cdot r\cdot \det(A_{n,n}) = r\cdot r^n = r^{n+1}.
+    \end{align*}
+    This completes the proof.
+  \end{proof}
+  Here is the proof for exercise 23.
+  \begin{proof}
+    The transformation $T$ that maps the unit ball in $\R^n$ to the ball of
+    radius $r$ in $R^n$ is given by
+    \(
+      T(x) = A_{n,n} x
+    \)
+    where $A_{n,n}$ is an $n$ by $n$ diagonal matrix, and it is filled with
+    real number $r$ in the diagonal. From \cref{lm:matrix}, we know that its
+    determinant is $r^n$. When $r$ is not zero, then, the transformation is
+    one-to-one and onto, since the linear transformation matrix has a non-zero
+    determinant. When $r$ is zero, the transformation is not one-to-one nor
+    onto, however, such transformation maps a $n$-dimensional unit ball into a
+    point which has zero volume, thus the statement is trivially true. This
+    completes the proof.
+  \end{proof}
+\end{Answer}
+
+\begin{Answer}[number=24]
+  We can transform the equality $ax^2+ay^2=cz^2, z\ge 0$ to
+  \begin{align*}
+    x^2+y^2&=\frac{c}{a}z^2 \\
+    \rho^2 \sin^2\varphi&=\frac{c}{a}\rho^2\cos^2\varphi \\
+    \tan^2\varphi&=\frac{c}{a} \\
+    \varphi&=\tan^{-1}\sqrt{\frac{c}{a}}.
+  \end{align*}
+  Thus, it is a cone which has the angle of $\tan^{-1}\sqrt{\frac{c}{a}}$ away
+  from the $z$ axis.
+\end{Answer}
+
+\begin{Answer}[number=25]
+  \begin{enumerate}
+    \item \begin{proof}
+      If $g\circ f$ is one-to one, $f$ is one-to-one must be. Assume towards
+      contradiction that $f$ is not one-to-one. That implies that that for some
+      value $a\ne b$, $f(a)=f(b)$ holds. In addition, we have $g(f(a)) =
+      g(f(b))$, yet $a\ne b$. However, $g\circ f$ is one-to-one. Hence a
+      contradiction. This completes the proof.
+    \end{proof}
+    \item \begin{proof}
+        If $g\circ f$ is one-to one, $g$ does not have to be one-to-one. A
+        counter example of the proposition can be given as
+        \(f(x) = \begin{bmatrix}
+          \imat{2} \\ 0 & 0
+        \end{bmatrix}x\), which is one-to-one, since the number of
+        pivots and the number of columns are the same, and \(g(x) = \begin{bmatrix}
+          \mqty{\imat{2}} & \mqty{0\\0}
+        \end{bmatrix}x\) which is not one-to-one, since the number of pivots
+        and the number of columns are different. Thus, we have $(f\circ g) (x)
+        = \begin{pmatrix}
+          \imat{2}
+        \end{pmatrix}x$, which is one-to-one, since the number of
+        pivots and the number of columns are the same. This completes the
+        proof.
+    \end{proof}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=26]
+  \begin{enumerate}
+    \item A example can be $10^{-10}\sin(10^{20}x)$. We have
+      $\abs{f(x)}=10^{-10}$ and $\abs{f'(x)}=10^{10}$.
+    \item %\hspace{3cm}
+    \item \begin{proof}
+        We can pick a function that is in the form of $f(x) = a\sin(bx)$ and
+        $f'(x)=ab\sin(bx)$. For every fixed $\varepsilon> 0$ and $N> 0$, to
+        fulfill $\abs{f(x)}<\varepsilon$ for all $x$, $\abs{a} < \varepsilon$
+        must holds. To fulfill $f'(x)\ge N$ for $x$ that makes $f'(x)=a$,
+        we have
+        \begin{align*}
+          \abs{a}b &\ge N, \\
+          N/b &\le \abs{a} < \varepsilon  \\
+          b/N &> 1/\varepsilon  \\
+          b &> N/\varepsilon.
+        \end{align*}
+        This completes the requirements.
+    \end{proof}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=27]
+  This picture can be used to proof that \(\det(\mqty[c & a \\ d & b]) =
+  cb-ad\). A square with the
+  vertexes of $(0,0), (1, 0), (1, 0)$ and $(1,1)$, which has the area of $1$,
+  is mapped to a parallelogram with vertexes $(0,0), (c,d), (a, b)$ and $(c+a,
+  d+b)$ by the above matrix, which has the area of $(c+a)(b+d)-2ad-cd-ab=cb+cd+ab+ad-2ad-cd-ab =
+  cb-ad$ from the diagram, which should equal to the matrix's determinant.
+\end{Answer}
+
+\begin{Answer}[number=28]
+  \emph{16.2.4:} The curve can be parametrized by \(\begin{cases}
+    x(t) &= 3t+2\\
+    y(t) &= 4t
+  \end{cases}\), for $0\le t\le 1$. We have $x'(t) = 3$ and $y'(t) = 4$.
+  We then have the integral as
+  \[
+    \int_C xe^y\dd{s} = \int_0^1 (3t+2)e^{4t}\sqrt{3^2+4^2}\dd{t}.
+  \]
+
+  \emph{16.2.6:} We have the parametric equations as \(\begin{cases}
+    x(t) &= t^3\\
+    y(t) &= t
+  \end{cases}\), for $-1\le t\le 1$. We have $x'(t) = 3t^2$.
+  We then have the integral as
+  \[
+    \int_C e^x\dd{x} = \int_{-1}^1 e^{t^3} \cdot \sqrt{(3t^2)^2}\dd{t}= \int_{-1}^1 e^{t^3} \cdot 3t^2\dd{t}.
+  \]
+\end{Answer}
+\end{document}
