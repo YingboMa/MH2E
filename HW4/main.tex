@@ -1,4 +1,4 @@
-\documentclass[8pt,twocolumn]{article}
+\documentclass[8pt]{article}
 \input{../typesetting.tex}
 \author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
 \title{\vspace{-1.cm}Homework 4}
@@ -42,26 +42,26 @@
   Let $T_2:(x,y)\mapsto (u,v)$ be given by $(x,y)\mapsto(x+y, x-y)$.
   Let $T_1:(u,v)\mapsto (x,y)$ be given by $(u,v)\mapsto((u+v)/2, (u-v)/2)$.
   The region $R$ consists of all the points in the $xy$-plane satisfying $y\le
-  -x+1, y\ge x-1, y\ge x-1,$ and $y\le x+1$.
+  -x+1, y\ge x-1, y\ge -x-1,$ and $y\le x+1$.
   The region $S$ consists of all the points in the $uv$-plane satisfying $u\le
   1, v\le 1, u\ge -1,$ and $v\ge -1$.
   We can proof that $T_1$ maps $S$ to $R$ by direct proof. We then have
   \begin{align*}
     y\le -x+1 & \Rightarrow y+x \le 1  \Rightarrow u \le 1   \\
     y\ge x-1  & \Rightarrow y-x \ge -1 \Rightarrow v \le 1   \\
-    y\ge x-1  & \Rightarrow y+x \ge -1 \Rightarrow u \ge -1  \\
+    y\ge -x-1  & \Rightarrow y+x \ge -1 \Rightarrow u \ge -1  \\
     y\le x+1  & \Rightarrow y-x \le 1  \Rightarrow v \ge -1.
   \end{align*}
   We can also proof that $T_2$ maps $R$ to $S$ by direct proof. We have
   \begin{align*}
     u \le 1  & \Rightarrow 2u \le 2  \Rightarrow \frac{u+v}{2} + \frac{u-v}{2} \le 1
-    \Rightarrow x+y \le 1\\
+    \Rightarrow x+y \le 1 \Rightarrow y\le -x+1\\
     u \ge -1 & \Rightarrow 2u \ge -2 \Rightarrow \frac{u+v}{2} + \frac{u-v}{2} \ge -1
-    \Rightarrow x+y \ge -1\\
+    \Rightarrow x+y \ge -1 \Rightarrow y\ge x-1\\
     v \le 1  & \Rightarrow 2v \le 2  \Rightarrow \frac{v+u}{2} + \frac{v-u}{2} \le 1
-    \Rightarrow x-y \le 1\\
+    \Rightarrow x-y \le 1 \Rightarrow y\ge x-1\\
     v \ge -1 & \Rightarrow 2v \ge -2 \Rightarrow \frac{v+u}{2} + \frac{v-u}{2} \ge -1
-    \Rightarrow x-y \ge -1.
+    \Rightarrow x-y \ge -1 \Rightarrow y\le x+1.
   \end{align*}
   Thus, we have demonstrated that $T2: R\mapsto S$ and $T1: S\mapsto R$. We
   then show that $T_1 \circ T_2$ is the identity map on $R$:
@@ -216,7 +216,7 @@
         We can pick a function that is in the form of $f(x) = a\sin(bx)$ and
         $f'(x)=ab\sin(bx)$. For every fixed $\varepsilon> 0$ and $N> 0$, to
         fulfill $\abs{f(x)}<\varepsilon$ for all $x$, $\abs{a} < \varepsilon$
-        must holds. To fulfill $f'(x)\ge N$ for $x$ that makes $f'(x)=a$,
+        must holds. To fulfill $f'(x)\ge N$ for $x$ that makes $f'(x)=\abs{a}b$,
         we have
         \begin{align*}
           \abs{a}b &\ge N, \\
