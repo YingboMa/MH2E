@@ -12,21 +12,10 @@ t = -20:0.2:20
 plot!(plt, map(x->para(x)[1], t), map(x->para(x)[2], t))
 savefig("fig.tex")
 
-f(x,y) = begin
-    sin.(x) + cos.(y)
-end
-X = repmat(x',length(y),1)
-Y = repmat(y,1,length(x))
-Z = map(f,X,Y)
-p = contour(x,y,Z)
-savefig("fig1.pdf")
-run(`google-chrome-stable fig1.pdf`)
-
 n = 100
-ts = linspace(0,2,n)
-x = ts .* map(cos,ts)
-y = (0.1ts)
+ts = linspace(2,7,n)
+x = ts
+y = zeros(x)
 z = collect(1:n) ./ 100
 plot(x,y,z,fill=true,leg=false,cbar=false,w=1, size=(250,250))
 savefig("fig1.tex")
-run(`google-chrome-stable fig1.pdf`)
