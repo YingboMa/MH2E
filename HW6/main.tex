@@ -1,0 +1,52 @@
+\documentclass[8pt,twocolumn]{article}
+\input{../typesetting.tex}
+\author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
+\title{\vspace{-1.cm}Homework 6}
+\date{May 20, 2018}
+
+\begin{document}
+\maketitle
+
+\begin{Answer}[number=32]
+  \emph{16.3.3:}
+  Let $A(x,y) = xy+y^2$ and $B(x,y) = x^2+2xy$. We have $\pdv{A}{y} = x+2y$ and
+  $\pdv{B}{x} = 2x+2y$. The $\bm$ field is not conservative since
+  $\pdv{A}{y}\ne \pdv{B}{y}$.
+
+  \emph{16.3.13:}
+  We have $\bm{F} = \grad f = \mqty[x^2y^3\\x^3y^2]$, thus we have
+  $f(x,y)=\frac{x^3y^3}{3}+g(y)$ and $\pdv{f}{y} = x^3y^2 + \dv{g}{y} =
+  x^3y^2$. Hence, we have $\dv{g}{y} = 0$. If we take $g(y)=0$, then we have
+  $f(x,y) = \frac{x^3y^3}{3}$.
+
+  \[\int_C\bm{F}\cdot\dd{r} = \int_C\grad f\cdot\dd{r} = f(-1,3)-f(0,0) = -9.\]
+
+  \emph{16.3.35:}
+  Let $P(x,y) = -\frac{y}{x^2+y^2}$, and $Q(x,y)=\frac{x}{x^2+y^2}$, thus we
+  have $\pdv{P}{y} = \frac{y^2-x^2}{(x^2+y^2)^2}$, and $\pdv{Q}{x} =
+  \frac{y^2-x^2}{(x^2+y^2)^2}$. Hence $\pdv{Q}{x}=\pdv{P}{y}$.
+
+  Let $C_1: x(t) = \cos(t), y(t) = \sin(t), 0\le t\le \pi, C_2:x(t) = \cos(t),
+  y(t) = \sin(t), t$ from $0$ to $-\pi$. We have
+  \[
+    \int_{C_1} \bm{F}\cdot \dd{\bm{r}} = \int_0^\pi \frac{\sin^2t +
+    \cos^2t}{\sin^2t + \cos^2t} \dd{t} = \int_0^\pi \dd{t} = \pi,
+  \]
+  and
+  \[
+    \int_{C_2} \bm{F}\cdot \dd{\bm{r}} = \int_0^{-\pi}\dd{t} = -\pi.
+  \]
+  Those integrals are not equal. However, this doesn't contradict the Theorem
+  6, since there is a singularity at $(0,0)$ in the function $\bm{F}$.
+\end{Answer}
+\begin{Answer}[number=33]
+  \begin{proof}
+    We know that $(x,y,z_1,z_2,z_3)$ is a point in the $5$-dimensional unit
+    ball, thus we have the relation $x^2+y^2+z_1^2+z_2^2+z_3^2 = 1^2$. Hence we
+    have $z_1^2+z_2^2+z_3^2 = 1^2-x^2-y^2$, which means that the point $(z_1,
+    z_2, z_3)$ is exactly in a three dimensional with a radius
+    $\sqrt{\abs{1^2-x^2-y^2}}$. This completes the proof.
+  \end{proof}
+\end{Answer}
+
+\end{document}
