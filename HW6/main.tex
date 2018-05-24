@@ -7,7 +7,7 @@
 \begin{document}
 \maketitle
 
-\begin{Answer}[number=32]
+\begin{Answer}[number=33]
   \emph{16.3.3:}
   Let $A(x,y) = xy+y^2$ and $B(x,y) = x^2+2xy$. We have $\pdv{A}{y} = x+2y$ and
   $\pdv{B}{x} = 2x+2y$. The $\bm$ field is not conservative since
@@ -39,14 +39,126 @@
   Those integrals are not equal. However, this doesn't contradict the Theorem
   6, since there is a singularity at $(0,0)$ in the function $\bm{F}$.
 \end{Answer}
-\begin{Answer}[number=33]
-  \begin{proof}
-    We know that $(x,y,z_1,z_2,z_3)$ is a point in the $5$-dimensional unit
-    ball, thus we have the relation $x^2+y^2+z_1^2+z_2^2+z_3^2 = 1^2$. Hence we
-    have $z_1^2+z_2^2+z_3^2 = 1^2-x^2-y^2$, which means that the point $(z_1,
-    z_2, z_3)$ is exactly in a three dimensional with a radius
-    $\sqrt{\abs{1^2-x^2-y^2}}$. This completes the proof.
-  \end{proof}
+
+\begin{Answer}[number=34]
+  \begin{enumerate}
+    \item
+      \begin{proof}
+        We know that $(x,y,z_1,z_2,z_3)$ is a point in the $5$-dimensional unit
+        ball, thus we have the relation $x^2+y^2+z_1^2+z_2^2+z_3^2 \le 1^2$.
+        Hence we have $z_1^2+z_2^2+z_3^2 \le 1^2-x^2-y^2$, which means that the
+        point $(z_1, z_2, z_3)$ is exactly in a three dimensional with a radius
+        $\sqrt{\abs{1^2-x^2-y^2}}$. Also, if the point $(z_1, z_2, z_3)$ is in
+        a three dimensional with a radius $\sqrt{\abs{1^2-x^2-y^2}}$, then we
+        have $z_1^2+z_2^2+z_3^2 \le 1^2-x^2-y^2$, which naturally leads to
+        $x^2+y^2+z_1^2+z_2^2+z_3^2 \le 1^2$, which means that $(z_1, z_2, z_3)$
+        point is in the $5$-dimensional unit ball. This completes the proof.
+      \end{proof}
+    \item
+      \begin{proof}
+        We have the relation
+        \begin{align*}
+          V_5&=\int_0^{2\pi} \int_0^R V_{3} \sqrt{1-r^2}\; r \dd{r}\dd{\theta}\\
+          V_5&=\frac{2\pi}{5} V_3 = \frac{8\pi^2}{15},
+        \end{align*}
+        where $V_5$ denotes the volume for a $5$-dimensional unit ball, and
+        $V_3$ denotes the volume for a $3$-dimensional unit ball, which is
+        $\frac{4}{3}\pi$.
+        This completes the proof.
+      \end{proof}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=35]
+  \begin{enumerate}
+    \item \begin{proof}
+      We are going to prove this proposition by direct proof. Using the
+      definition of the line integral, we have
+      \begin{align*}
+        \int_C \bm{F}\cdot \dd{\bm{r}} = \int_a^b \bm{F}(x(t), y(t)) \cdot
+        \bm{T}(t) \dd{t},
+      \end{align*}
+      where $\bm{T}(t)$ is denotes the tangent vector at point $t$, and $x(a),
+      y(a)$ and $x(b), y(b)$ are the end points of the curve $C$.
+      We know that the tangent vector to $C$ is perpendicular to the vector
+      field at every point. Thus the integrand vanishes and we get $\int_a^b 0
+      \dd{t} = 0$. This completes the proof.
+    \end{proof}
+    \item \begin{proof}
+        We are going to disprove it by a counter example. Let $\bm{F}(x,y) =
+        \mqty[0, 1]$ be the vector field, and a parameterized curve $C$ a circle,
+        which starts and ends at $(1,0)$ with radius $1$, which is
+        $x(t)=\cos(t), y(t)=\sin(t), 0\le t\le 2\pi$. The tangent vector at
+        point $(1,0)$ is $\mqty[0, 1]$, which is not perpendicular with
+        $\bm{F}(0, 1) = \mqty[0, 1]$. Let $f(x,y)=y$, we then have $\grad f =
+        \mqty[0, 1]$. By the fundamental theorem of calculus for line
+        integrals, we have
+        \begin{align*}
+          \int_C \bm{F}\cdot \dd{\bm{r}}= f(0,0) - f(0,0) = 0.
+        \end{align*}
+        This completes the proof.
+    \end{proof}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=36]
+  \begin{enumerate}
+    \item A piecewise smooth curve is a curve that can be write as a union of
+      finite number of smooth curves.
+    \item \begin{proof}
+      We are going to prove this by using induction on the variable $n$. Let
+      $C$ be a piecewise smooth curve that is $C = \sum_{i=1}^n C_i$ that
+      starts at point $a$ and ends at point $b$, where $n$
+      is an integer that is greater or equal to $1$. We are trying to show that
+      \begin{align*}
+        \int_C \grad f \cdot \dd{\bm{r}} = f(b) - f(a).
+      \end{align*}
+      \emph{Base case:}
+      When $n=1$, we have $C = C_1$ and
+      \begin{align*}
+        \int_{C_1} \grad f \cdot \dd{\bm{r}} = f(b) - f(a)
+      \end{align*}
+      is true by the fundamental theorem of line integrals for smooth curves.
+
+      \emph{Inductive step:}
+      Assume that the proposition holds for some fixed integer $n\ge 1$, and we
+      are trying to show that it is also true for $n+1$. Let point $c$ be the
+      end point for the curve $\hat{C} = \sum_{i=1}^n C_i$. We then have
+      \begin{align*}
+        \int_{C}\grad f \cdot \dd{\bm{r}} &= \int_{\sum_{i=1}^{n+1} C_i} \grad
+        f \cdot \dd{\bm{r}} \\
+        &= \int_{\hat{C} + C_{n+1}} \grad f \cdot \dd{\bm{r}} \\
+        &= [f(c) - f(a)] + \int_{C_{n+1}} \grad f \cdot \dd{\bm{r}} \\
+        &= [f(c) - f(a)] + [f(b) - f(c)] \\
+        &= f(b) - f(a).
+      \end{align*}
+      This completes the proof.
+    \end{proof}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=37]
+  \begin{enumerate}
+    \item The parameterized function $-C$ will be $x=f\circ c (t)$ and $y =
+      g\circ c (t)$, where $c(t) = -t$. Let $C$ be the curve $x=\cos(t),
+      y=\sin(t), 0\le t\le \pi$, which starts at $(1,0)$ and ends at $(-1,0)$.
+      Then $-C$ is $x=\cos(-t), y=\sin(-t), -\pi \le t\le -0$, which starts at
+      $(-1,0)$ and ends at $(1,0)$.
+
+    \item \begin{proof}
+        We are going to prove this proposition by direct proof. Let $\bm{T}(t)$
+        be the tangent vector of the curve $C$ at $t$, and $c(t) = -t$. Thus
+        $\bm{T}(c(t))$ is the tangent vector of the curve $-C$ at $t$. We have
+        \begin{align*}
+          \int_{-C} \bm{F}\cdot \dd{\bm{r}} &= \int_{-b}^{-a} \bm{F}(f(c(t)),
+          g(c(t))) \cdot \bm{T}(c(t)) \dd{t} \\
+          &= \int_{b}^{a} \bm{F}(f(t), g(t)) \cdot \bm{T}(t) \dd{t} \\
+          &= -\int_{b}^{a} \bm{F}(f(t), g(t)) \cdot \bm{T}(t) \dd{t} \\
+          &= -\int_C \bm{F}\cdot \dd{\bm{r}}.
+        \end{align*}
+        This completes the proof.
+    \end{proof}
+  \end{enumerate}
 \end{Answer}
 
 \end{document}
