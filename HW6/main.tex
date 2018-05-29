@@ -48,15 +48,16 @@
         ball, thus we have the relation $x^2+y^2+z_1^2+z_2^2+z_3^2 \le 1^2$.
         Hence we have $z_1^2+z_2^2+z_3^2 \le 1^2-x^2-y^2$, which means that the
         point $(z_1, z_2, z_3)$ is exactly in a three dimensional with a radius
-        $\sqrt{\abs{1^2-x^2-y^2}}$. Also, if the point $(z_1, z_2, z_3)$ is in
-        a three dimensional with a radius $\sqrt{\abs{1^2-x^2-y^2}}$, then we
+        $\sqrt{1^2-x^2-y^2}$. Also, if the point $(z_1, z_2, z_3)$ is in
+        a three dimensional with a radius $\sqrt{1^2-x^2-y^2}$, then we
         have $z_1^2+z_2^2+z_3^2 \le 1^2-x^2-y^2$, which naturally leads to
         $x^2+y^2+z_1^2+z_2^2+z_3^2 \le 1^2$, which means that $(z_1, z_2, z_3)$
         point is in the $5$-dimensional unit ball. This completes the proof.
       \end{proof}
     \item
       \begin{proof}
-        We have the relation
+        We have the relation by thinking to take a $3$-dimensional cut in
+        $5$-dimensional unit ball.
         \begin{align*}
           V_5&=\int_0^{2\pi} \int_0^R V_{3} \sqrt{1-r^2}\; r \dd{r}\dd{\theta}\\
           V_5&=\frac{2\pi}{5} V_3 = \frac{8\pi^2}{15},
@@ -153,7 +154,7 @@
           \int_{-C} \bm{F}\cdot \dd{\bm{r}} &= \int_{-b}^{-a} \bm{F}(f(c(t)),
           g(c(t))) \cdot \bm{T}(c(t)) \dd{t} \\
           &= \int_{b}^{a} \bm{F}(f(t), g(t)) \cdot \bm{T}(t) \dd{t} \\
-          &= -\int_{b}^{a} \bm{F}(f(t), g(t)) \cdot \bm{T}(t) \dd{t} \\
+          &= -\int_{a}^{b} \bm{F}(f(t), g(t)) \cdot \bm{T}(t) \dd{t} \\
           &= -\int_C \bm{F}\cdot \dd{\bm{r}}.
         \end{align*}
         This completes the proof.

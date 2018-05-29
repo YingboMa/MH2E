@@ -1,0 +1,87 @@
+\documentclass[8pt,twocolumn]{article}
+\input{../typesetting.tex}
+\author{Yingbo Ma \thanks{Student ID: \tt{16058474}}}
+\title{\vspace{-1.cm}Homework 7}
+\date{May 28, 2018}
+
+\begin{document}
+\maketitle
+
+\begin{Answer}[number=38]
+  \begin{proof}
+    We are going to proof the proposition by direct proof. We know that every
+    line integral along a closed curve is $0$ in such vector field. We have
+    \begin{align*}
+      \oint_{\Gamma} \bm{F}\cdot \dd{\bm{r}} = \int_{C_1} \bm{F}\cdot \dd{\bm{r}} + \int_{C_2}
+      \bm{F}\cdot \dd{\bm{r}} = 0,
+    \end{align*}
+    where $C_1 + C_2 = C_\Gamma$. Then, we have
+    \begin{align*}
+      \int_{C_1}\bm{F}\cdot \dd{\bm{r}} &= -\int_{C_2}\bm{F}\cdot \dd{\bm{r}} \\
+      \int_{C_1}\bm{F}\cdot \dd{\bm{r}} &= \int_{-C_2}\bm{F}\cdot \dd{\bm{r}},
+    \end{align*}
+    and $C_1$ and $-C_2$ shares the same end points. Since the curves $C_1$ and
+    $-C_2$ are completely arbitrary, we can conclude that $\bm{F}$ is path
+    independent. This completes the proof.
+  \end{proof}
+\end{Answer}
+
+\begin{Answer}[number=39]
+  \begin{proof}
+    We are going to proof the proposition by direct proof. We know that
+    circulation density is
+    \begin{align*}
+      \lim_{A\to 0}{\frac{1}{\abs{A}}}\oint _{C}\bm{F} \cdot \dd{\bm{r}}
+    \end{align*}
+    We also know that
+    \begin{align*}
+      \int_{C_{\bm{a}\to \bm{b}}} \grad f \cdot\dd{\bm{r}} = f(\bm{b}) -
+      f(\bm{a}).
+    \end{align*}
+    Thus, we have
+    \begin{align*}
+      \oint_{\Gamma} \grad f \cdot\dd{\bm{r}} = 0.
+    \end{align*}
+    Thus the circulation density is
+    \begin{align*}
+      &\lim_{A\to 0}{\frac{1}{\abs{A}}}\oint_{\Gamma}\grad f \cdot \dd{\bm{r}} \\
+      =&\lim_{A\to 0}{\frac{1}{\abs{A}}}\cancelto{0}{\oint_{C}\grad f \cdot
+      \dd{\bm{r}}} = 0.
+    \end{align*}
+    This completes the proof.
+  \end{proof}
+\end{Answer}
+
+\begin{Answer}[number=40]
+  \begin{enumerate}
+    \item \begin{proof}
+      We have
+      \begin{align*}
+        \pdv{Q}{x} &= \frac{1}{x^2+y^2}-\frac{2x^2}{\left(x^2+y^2\right)^2} \\
+        \pdv{P}{y} &= \frac{2y^2}{\left(x^2+y^2\right)^2}-\frac{1}{x^2+y^2}.
+      \end{align*}
+      Thus, we have $Q_x - P_y = 0$. This completes the proof.
+    \end{proof}
+    \item \begin{proof}
+      Let $P(x,y) = -\frac{y}{x^2+y^2}$, and $Q(x,y)=\frac{x}{x^2+y^2}$, thus we
+      have $\pdv{P}{y} = \frac{y^2-x^2}{(x^2+y^2)^2}$, and $\pdv{Q}{x} =
+      \frac{y^2-x^2}{(x^2+y^2)^2}$. Hence $\pdv{Q}{x}=\pdv{P}{y}$.
+
+      Let $C_1: x(t) = \cos(t), y(t) = \sin(t), 0\le t\le \pi, C_2:x(t) = \cos(t),
+      y(t) = \sin(t), t$ from $0$ to $-\pi$. We have
+      \[
+        \int_{C_1} \bm{F}\cdot \dd{\bm{r}} = \int_0^\pi \frac{\sin^2t +
+        \cos^2t}{\sin^2t + \cos^2t} \dd{t} = \int_0^\pi \dd{t} = \pi,
+      \]
+      and
+      \[
+        \int_{C_2} \bm{F}\cdot \dd{\bm{r}} = \int_0^{-\pi}\dd{t} = -\pi.
+      \]
+      Those integrals are not equal. Thus, this field is not conservative.
+    \end{proof}
+    \item This doesn't contradict the Theorem 16.3.6, since there is a
+      singularity at $(0,0)$ in the function $\bm{F}$.
+  \end{enumerate}
+\end{Answer}
+
+\end{document}
