@@ -31,7 +31,7 @@
     We are going to proof the proposition by direct proof. We know that
     circulation density is
     \begin{align*}
-      \lim_{A\to 0}{\frac{1}{\abs{A}}}\oint _{C}\bm{F} \cdot \dd{\bm{r}}
+      \lim_{A\to 0}{\frac{1}{\abs{A}}}\oint_{\Gamma}\bm{F} \cdot \dd{\bm{r}}
     \end{align*}
     We also know that
     \begin{align*}
@@ -45,7 +45,7 @@
     Thus the circulation density is
     \begin{align*}
       &\lim_{A\to 0}{\frac{1}{\abs{A}}}\oint_{\Gamma}\grad f \cdot \dd{\bm{r}} \\
-      =&\lim_{A\to 0}{\frac{1}{\abs{A}}}\cancelto{0}{\oint_{C}\grad f \cdot
+      =&\lim_{A\to 0}{\frac{1}{\abs{A}}}\cancelto{0}{\oint_{\Gamma}\grad f \cdot
       \dd{\bm{r}}} = 0.
     \end{align*}
     This completes the proof.
@@ -84,4 +84,82 @@
   \end{enumerate}
 \end{Answer}
 
+\begin{Answer}[number=41]
+  \begin{enumerate}
+    \item \begin{proof}
+      Let the parametrization of curve $C$ be $\gamma(t)$ for $a\le t\le b$. We have
+      \begin{align*}
+        \int_{C} \bm{F}\cdot \dd{\bm{r}} + \int_{C} \bm{G}\cdot \dd{\bm{r}} &=
+        \int_a^b \bm{F}(\bm{\gamma}(t)) \cdot \bm{\gamma}'(t) + \bm{G}(\bm{\gamma}(t)) \cdot \bm{\gamma}'(t) \dd{t} \\
+        &= \int_a^b [\bm{F}(\bm{\gamma}(t)) + \bm{G}(\bm{\gamma}(t))] \cdot \bm{\gamma}'(t) \dd{t} \\
+        &= \int_{C} [\bm{F} + \bm{G}]\cdot \dd{\bm{r}}
+      \end{align*}
+      This completes the proof.
+    \end{proof}
+    \item \begin{proof}
+        Let $\gamma(t) = \mqty[x+a\\ y]$, where $x=\cos t, y=\sin t$ for $0\le
+        t\le 2\pi$ be the parametrization of $\Gamma$. We have
+        \begin{align*}
+          \int_C \bm{F} \cdot \dd{\bm{r}} &= \int_C
+          \mqty[\frac{-y}{(x+a)^2 + y^2}\\ \frac{x-a}{(x+a)^2 + y^2}] \cdot
+          \dd{\bm{r}} \\
+          &= \int_\Gamma \mqty[\frac{-y}{x^2 + y^2}\\ \frac{x}{x^2 + y^2}] \cdot
+          \dd{\bm{r}} = 2\pi.
+        \end{align*}
+        This completes the proof.
+    \end{proof}
+    \item
+    \item The field is conservative everywhere expect the singularity. The
+      integral that encloses one singularity is valued $2\pi$. This integral
+      encloses two singularities, thus it should has the value $4\pi$.
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=42]
+  \begin{enumerate}
+    \item \[ \bm{F} = \mqty[z^2\\ 0\\ 2x - \frac{x^3}{3}]. \]
+    \item \begin{proof}
+      We are going to prove this by contradiction. Assume towards
+      contradiction, that such field $\bm{F}$ exists. We have $\div\curl\bm{F}
+      = 0$. However, we have $\div ((x^2+2y - 2)\hat{j})=2$. Thus such field
+      does not exist.
+    \end{proof}
+  \end{enumerate}
+\end{Answer}
+
+\begin{Answer}[number=42]
+  \emph{16.4.10:}
+  \begin{align*}
+    &\int_C (1-y^3) \dd{x} + (x^3+e^{y^2}) \dd{y}\\ &= \iint_{D}
+    \pdv{x}(x^3+e^{y^2}) + \pdv{y}(1-y^3) \dd{A} \\
+    &= \iint_{D} 3x^2 - 3y^2 \dd{A} = \int_0^{2\pi} \int_2^3 3r^2
+    r\dd{r}\dd{\theta}\\
+    &= 3\int_0^{2\pi}\dd{\theta} \int_2^3 \dd{r} =
+    3(2\pi)\cdot\frac{1}{4}(81-16) = \frac{195\pi}{2}
+  \end{align*}
+
+  \emph{16.4.28:}
+  \begin{align*}
+    \int_C \bm{F} \cdot \dd{\bm{r}} &= \iint_D Q_x - P_y \dd{A} \\
+    &= \iint_D 3 - 1 \dd{A} = 2A = 2\cdot 6 =12.
+  \end{align*}
+
+  \emph{16.5.25:}
+  \begin{proof}
+    Let $\bm{F}$ be $P\hat{i} + Q\hat{j} + R\hat{k}$ and $f$ be a scalar function
+    that depends on $x,y$ and $z$. We have
+    \begin{align*}
+      \text{div} (f\bm{F}) &= \div (fP\hat{i} + fQ\hat{j} + fR\hat{k}) = \pdv{fP}{x} +
+      \pdv{fQ}{y} + \pdv{fR}{z}\\
+      &= f\pdv{P}{x} + P\pdv{f}{x} + f\pdv{Q}{y} + Q\pdv{f}{y} + f\pdv{R}{z} +
+      R\pdv{f}{z} \\
+      &= f(\pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z}) \\
+      &+ (P\hat{i} + Q\hat{j} +
+      R\hat{k}) \cdot (\pdv{f}{x}\hat{i} + \pdv{f}{y}\hat{j} + \pdv{f}{z}\hat{k})
+      \\
+      &= f\text{ div} \bm{F} + \bm{F}\cdot\grad f.
+    \end{align*}
+    This completes the proof.
+  \end{proof}
+\end{Answer}
 \end{document}
